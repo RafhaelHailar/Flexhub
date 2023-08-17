@@ -263,6 +263,7 @@ section h2 {
 
 .swiper-rating {
   padding: 10px;
+  user-select: none;
 }
 
 /* Movie Details */
@@ -413,6 +414,7 @@ section h2 {
   display: inline-block;
   font-size: 18px;
   position: absolute;
+  cursor: pointer !important;
 }
 
 #prev:hover {
@@ -433,7 +435,7 @@ section h2 {
   display: inline-block;
   font-size: 18px;
   position: absolute;
-  left: 15%;
+  left: 19%;
 }
 
 #next:hover {
