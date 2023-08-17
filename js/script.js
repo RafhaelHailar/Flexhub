@@ -220,9 +220,9 @@ async function fetchAndDisplayPopularMovies() {
 
   async function displaySearch(type,search_term) {
       const response = await fetch(`https://api.themoviedb.org/3/search/${type}?query=${search_term}&include_adult=false&page=1&api_key=9455ea8347cb46b03f90c88f132db4a2`);
+      
       const data = await response.json();
       const results = data.results;
-      
 
       results.forEach(result => {
           const card = document.createElement("div");
@@ -238,7 +238,7 @@ async function fetchAndDisplayPopularMovies() {
           title.innerHTML = type == "tv" ? result.name : result.title;
           const text = document.createElement("p");
           text.className = "card-text";
-          text.innerHTML= `<small class="text-muted">Release: ${result.first_air_date}`;
+          text.innerHTML= `<small class="text-muted">Release: ${type == "tv" ? result.first_air_date : result.release_date}`;
 
 
           body.appendChild(title);
@@ -267,3 +267,49 @@ async function fetchAndDisplayPopularMovies() {
     </p>
   </div>
 </div> */
+
+async function fetchAndDisplayPopularShows() {
+  const apiKey = '9455ea8347cb46b03f90c88f132db4a2'; // Replace with your actual API key
+  const response = await fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}`);
+  const data = await response.json();
+
+  const popularshowsContainer = document.getElementById('popular-shows');
+
+  data.results.forEach(shows => {
+    const showsCard = document.createElement('div');
+    showsCard.className = 'card';
+
+    const showsLink = document.createElement('a');
+    showsLink.href = `shows-details.html?id=${shows.id}`;
+
+    const showsImage = document.createElement('img');
+    showsImage.src = `https://image.tmdb.org/t/p/w300${shows.poster_path}`;
+    showsImage.className = 'card-img-top';
+    showsImage.alt = shows.title;
+
+    const cardBody = document.createElement('div');
+    cardBody.className = 'card-body';
+
+    const showsTitle = document.createElement('h5');
+    showsTitle.className = 'card-title';
+    showsTitle.textContent = shows.original_name;
+
+    const releaseDate = document.createElement('p');
+    releaseDate.className = 'card-text';
+    const releaseDateText = document.createElement('small');
+    releaseDateText.className = 'text-muted';
+    releaseDateText.textContent = `Release: ${shows.first_air_date}`;
+    releaseDate.appendChild(releaseDateText);
+
+    cardBody.appendChild(showsTitle);
+    cardBody.appendChild(releaseDate);
+
+    showsLink.appendChild(showsImage);
+    showsCard.appendChild(showsLink);
+    showsCard.appendChild(cardBody);
+
+    popularshowsContainer.appendChild(showsCard);
+  });
+}
+// Call the function to fetch and display popular movies
+//fetchAndDisplayPopularShows();
