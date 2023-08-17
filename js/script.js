@@ -45,6 +45,3 @@ async function fetchAndDisplayPopularMovies() {
   // Call the function to fetch and display popular movies
   fetchAndDisplayPopularMovies();
 
-function red() {
-    document.getElementById('p2').style.color="red";
-}

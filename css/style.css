@@ -14,6 +14,10 @@
   --color-secondary: #ff0000c1;
 }
 
+#star {
+  color: rgb(255, 230, 0);
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
@@ -31,6 +35,9 @@ a {
   text-decoration: none;
 }
 
+#details {
+  color: #c4c4c4;
+}
 
 ul {
   list-style: none;
@@ -51,6 +58,26 @@ ul {
 
 .back {
   margin-top: 30px;
+}
+
+#btn {
+  background-color:  white;
+  color: black;
+  border: none;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  position: absolute;
+}
+
+#btn:hover{
+  background: #ff0000;
+  color: white;
+  transition: 0.7s;
+  transform: scale(0.9);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
 }
 
 .btn {
@@ -134,7 +161,6 @@ ul {
   /* background: #04376b; */
   background: rgb(0, 0, 0);
   padding: 5px;
-  border: none;
 }
 
 .card img {
@@ -144,22 +170,25 @@ ul {
 .card-body {
   padding: 10px;
   font-size: 20px;
-  background: #121111da;
+  background: #f0ecec;
 }
 
 .card-title {
-  color:#ff0000;
+  color: rgb(37, 32, 32);
 }
 
 .card:hover {
-  transform: scale(1.05);
-  transition: all 0.5s ease-in-out;
+  /* transform: scale(1.05);
+  transition: all 0.5s ease-in-out; */
   /* background: #0a4b8f; */
-  background: #ff0000;
+  /* background: #ff0000; */
+  transition: 0.7s;
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
 small {
-  color: #ffffffa4;
+  color: #000000a4;
 }
 
 /* Footer */
@@ -364,4 +393,61 @@ section h2 {
 }
 .logo span{
   color: #ff0000;
+}
+
+.main-footer {
+  background: black;
+}
+
+#footer:hover {
+  color: #ff0000;
+}
+
+#prev{
+  background-color:  white;
+  color: black;
+  border: none;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  position: absolute;
+}
+
+#prev:hover {
+  background: #ff0000;
+  color: white;
+  transition: 0.7s;
+  transform: scale(0.9);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+#next{
+  background-color:  white;
+  color: black;
+  border: none;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  position: absolute;
+  left: 15%;
+}
+
+#next:hover {
+  background: #ff0000;
+  color: white;
+  transition: 0.7s;
+  transform: scale(0.9);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+#page-counter {
+  left: 17%;
+}
+
+#release {
+  color: #c4c4c4;
 }
