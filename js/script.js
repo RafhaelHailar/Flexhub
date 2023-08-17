@@ -1,3 +1,5 @@
+
+
 async function fetchAndDisplayPopularMovies() {
     const apiKey = '9455ea8347cb46b03f90c88f132db4a2'; // Replace with your actual API key
     const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`);
@@ -43,7 +45,7 @@ async function fetchAndDisplayPopularMovies() {
   }
 
   // Call the function to fetch and display popular movies
-  fetchAndDisplayPopularMovies();
+  //fetchAndDisplayPopularMovies();
 
 
   async function displaySwiperNoSwiping() {
@@ -130,7 +132,7 @@ async function fetchAndDisplayPopularMovies() {
 
   
 
-  displaySwiperNoSwiping();
+ // displaySwiperNoSwiping();
 
 // Structure
 
@@ -152,7 +154,11 @@ async function fetchAndDisplayPopularMovies() {
   window.addEventListener("DOMContentLoaded",function() {
     let str = location.href;
     let id = str.slice(str.search(/id=\d+/)).slice(3);
-    display(id);
+    //display(id);
+
+    let type = /type=(tv|movie)/.exec(str)[1];
+    let search_term = /search-term=(\w+)/.exec(str)[1];
+    displaySearch(type,search_term);
   })
 
   function display(id) {
@@ -210,3 +216,53 @@ async function fetchAndDisplayPopularMovies() {
 
         
   }
+
+
+  async function displaySearch(type,search_term) {
+      const response = await fetch(`https://api.themoviedb.org/3/search/${type}?query=${search_term}&include_adult=false&page=1&api_key=9455ea8347cb46b03f90c88f132db4a2`);
+      const data = await response.json();
+      const results = data.results;
+      
+
+      results.forEach(result => {
+          const card = document.createElement("div");
+          card.className = "card";
+          const a = document.createElement("a");
+          const img = document.createElement("img");
+          img.src = result.poster_path ? "https://image.tmdb.org/t/p/w300" + result.poster_path : "./images/no-image.jpg";
+          img.className = "card-img-top";
+          const body = document.createElement("div");
+          body.className = "card-body";
+          const title = document.createElement("h5");
+          title.className = "card-title";
+          title.innerHTML = result.name;
+          const text = document.createElement("p");
+          text.className = "card-text";
+          text.innerHTML= `<small class="text-muted">Release: ${result.first_air_date}`;
+
+
+          body.appendChild(title);
+          body.appendChild(text);
+
+          a.appendChild(img);
+
+          card.appendChild(a);
+          card.appendChild(body);
+
+          document.getElementById("search-results").appendChild(card);
+      })  
+  }
+
+
+//Structure
+/*   <div class="card">
+  <a href="#">
+    <img src="./images/no-image.jpg" class="card-img-top" alt="" />
+  </a>
+  <div class="card-body">
+    <h5 class="card-title">Movie Or Show Name</h5>
+    <p class="card-text">
+      <small class="text-muted">Release: XX/XX/XXXX</small>
+    </p>
+  </div>
+</div> */
