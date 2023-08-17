@@ -223,6 +223,7 @@ async function fetchAndDisplayPopularMovies() {
       
       const data = await response.json();
       const results = data.results;
+      console.log(data,type,search_term)
 
       results.forEach(result => {
           const card = document.createElement("div");
