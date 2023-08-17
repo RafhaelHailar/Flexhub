@@ -235,7 +235,7 @@ async function fetchAndDisplayPopularMovies() {
           body.className = "card-body";
           const title = document.createElement("h5");
           title.className = "card-title";
-          title.innerHTML = result.name;
+          title.innerHTML = type == "tv" ? result.name : result.title;
           const text = document.createElement("p");
           text.className = "card-text";
           text.innerHTML= `<small class="text-muted">Release: ${result.first_air_date}`;
@@ -251,6 +251,7 @@ async function fetchAndDisplayPopularMovies() {
 
           document.getElementById("search-results").appendChild(card);
       })  
+      console.log(results)
   }
 
 
